@@ -28,6 +28,7 @@ const playGame = function() {
       } else if (userChoice === null) {
             endGame();
       } else {
+            alert("Invalid choice!")
             playGame()
       };
 }
@@ -61,30 +62,33 @@ const endGame = function() {
             displayChoiceHistory();
       }
 }
-// Function for play again?
-const playAgain = function() {
-      let yesPlay = confirm("Play again?");
-      if (yesPlay === true) {
-            playGame();
-      } else if (yesPlay === false) {
-            endGame();
-      }
-}
 
 // Function for win/loss/tie result
 const gameResult = function() {
       if ((userChoice === "R" && oppChoice === "S") || (userChoice === "S" && oppChoice === "P") || (userChoice === "P" && oppChoice === "R")) {
-            alert("You win!");
             wins++;
-            playAgain();
+            let yesPlay = confirm("You win! Play again?");
+                  if (yesPlay === true) {
+            playGame();
+                  } else if (yesPlay === false) {
+            endGame();
+                  }  
       } else if ((userChoice === "R" && oppChoice === "P") || (userChoice === "S" && oppChoice === "R") || (userChoice === "P" && oppChoice === "S")) {
-            alert("You lose!");
             losses++;
-            playAgain();
+            let yesPlay = confirm("You lose! Play again?");
+                  if (yesPlay === true) {
+            playGame();
+                  } else if (yesPlay === false) {
+            endGame();
+                  }
       } else if (userChoice === oppChoice) {
-            alert("Tie!");
             ties++;
-            playAgain();
+            let yesPlay = confirm("Tie! Play again?");
+                  if (yesPlay === true) {
+            playGame();
+                  } else if (yesPlay === false) {
+            endGame();
+                  }
       }
 }
 

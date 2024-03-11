@@ -2,12 +2,22 @@
 // Set array for computer's choices
 const choices = ["R", "P", "S"]
 // Reset scores and counts when page is opened or refreshed
-let wins = 0;
-let losses = 0;
-let ties = 0;
-let userR = 0;
-let userP = 0;
-let userS = 0;
+const reset = function() {
+      wins = 0;
+      losses = 0;
+      ties = 0;
+      userR = 0;
+      userP = 0;
+      userS = 0;
+      document.getElementById("wins").textContent = ""
+      document.getElementById("losses").textContent = ""
+      document.getElementById("ties").textContent = ""
+      document.getElementById("rocks").textContent = ""
+      document.getElementById("papers").textContent = ""
+      document.getElementById("scissors").textContent = ""
+      removeDisplay();
+      return;
+}
 // Set emojis for RPS
 const rock = "🪨";
 const paper = "📄";
@@ -34,6 +44,7 @@ const playGame = function() {
 }
 // Function to remove RPS display
 const removeDisplay = function() {
+      document.getElementsByTagName("p").textContent = "";
       document.getElementById("opp-guess-heading").textContent = "";
       document.getElementById("user-guess-heading").textContent = "";
       document.getElementById("opp-guess-result").textContent = "";
@@ -133,7 +144,8 @@ const displayUserChoice = function() {
 };
 
 startButton.addEventListener("click", (e) => {
-      playGame();
+      reset();
+      setTimeout (playGame, 100);
 });
 
 

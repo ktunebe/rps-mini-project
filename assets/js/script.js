@@ -28,7 +28,14 @@ const startButton = document.querySelector("button");
 // Function to play a game
 const playGame = function() {
       userChoice = prompt('Type "R" for Rock, "P" for Paper, or "S" for Scissors');
-      if (userChoice === "R" || userChoice === "P" || userChoice === "S" || userChoice === "r" || userChoice === "p" || userChoice === "s") {
+      if (
+            userChoice === "R" || 
+            userChoice === "P" || 
+            userChoice === "S" || 
+            userChoice === "r" || 
+            userChoice === "p" || 
+            userChoice === "s"
+      ) {
             userChoice = userChoice.toUpperCase();
             autoChoice();
             showHeadings();
@@ -76,7 +83,11 @@ const endGame = function() {
 
 // Function for win/loss/tie result
 const gameResult = function() {
-      if ((userChoice === "R" && oppChoice === "S") || (userChoice === "S" && oppChoice === "P") || (userChoice === "P" && oppChoice === "R")) {
+      if (
+            (userChoice === "R" && oppChoice === "S") || 
+            (userChoice === "S" && oppChoice === "P") || 
+            (userChoice === "P" && oppChoice === "R")
+      ) {
             wins++;
             let yesPlay = confirm("You win! Play again?");
                   if (yesPlay === true) {
@@ -84,7 +95,11 @@ const gameResult = function() {
                   } else if (yesPlay === false) {
             endGame();
                   }  
-      } else if ((userChoice === "R" && oppChoice === "P") || (userChoice === "S" && oppChoice === "R") || (userChoice === "P" && oppChoice === "S")) {
+      } else if (
+            (userChoice === "R" && oppChoice === "P") || 
+            (userChoice === "S" && oppChoice === "R") || 
+            (userChoice === "P" && oppChoice === "S")
+      ) {
             losses++;
             let yesPlay = confirm("You lose! Play again?");
                   if (yesPlay === true) {
@@ -114,7 +129,7 @@ showHeadings = function() {
 
 // Generate opponent choice
 const autoChoice = function() {
-      oppChoice = choices[Math.floor(Math.random() * 3)];
+      oppChoice = choices[Math.floor(Math.random() * choices.length)];
       return;
 };
 // Display opponent choice
